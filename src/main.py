@@ -7,3 +7,7 @@ app = FastAPI(title="XOps")
 
 
 app.include_router(visited_links.router, prefix="/visited_links", tags=["visited_links"])
+
+@app.get("/")
+async def root():
+    return {"message": "XOps running!!!"}
