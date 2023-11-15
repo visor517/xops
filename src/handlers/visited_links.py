@@ -14,11 +14,11 @@ router = APIRouter()
 async def read_visited_links(
      from_: int = Query(None, description="С какого времени в формате (число секунд с начала эпохи)", alias="from"),
      to: int = Query(None, description="По какое время в формате (число секунд с начала эпохи)")):
-    query = visited_links.select()
+    query = visited_links.select().distinct(visited_links.c.domain)
     if from_:
-        query = query.where(visited_links.c.visited_at.is_distinct_from(from_))
+        query = query.where(visited_links.c.visited_at >= from_)
     if to:
-        query = query.where(visited_links.c.visited_at.isnot_distinct_from(to))
+        query = query.where(visited_links.c.visited_at <= to)
     res = await database.fetch_all(query)
     domains = [item["domain"] for item in res]
     return {"domains": domains}
@@ -33,5 +33,5 @@ async def create_visited_links(data: VisitedLinksIn):
             domain=link.host,
             visited_at=round(time())
         )
-    await database.execute(query)
+        await database.execute(query)
     return "ok"
