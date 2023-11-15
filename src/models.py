@@ -1,19 +1,16 @@
-from pydantic import BaseModel, model_validator, AnyUrl
-from urllib.parse import urlparse
+from pydantic import BaseModel, AnyUrl
 
 
 class VisitedLinksIn(BaseModel):
-    link: AnyUrl
-    domain: str
-
-    # разбиваем link
-    @model_validator(mode="after")
-    def separate_link(cls, values: dict) -> dict:
-        if "link" in values:
-            values["domain"] = urlparse(values["link"]).netloc
-        return values
+    links: list[AnyUrl]
 
 
-class VisitedLinks(VisitedLinksIn):
+class VisitedLink(BaseModel):
     id: str
-    visited_at: str
+    domain: str
+    visited_at: int
+
+
+class VisitedLinksOut(BaseModel):
+    domains: list[str]
+    status: str = "ok"
