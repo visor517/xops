@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "1f8f127a-798b-41e6-9e59-8e5b0e5b0a5a",
+		"name": "XOps tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16212676"
+	},
+	"item": [
+		{
+			"name": "Отправить ссылки",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус ответа 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"В ответе ok\", () => {\r",
+							"  pm.expect(pm.response.text()).to.equal(\"ok\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"links\": [\r\n      \"https://ya.ru/\",\r\n      \"https://ya.ru/search/?text=мемы+с+котиками\",\r\n      \"https://sber.ru\",\r\n      \"https://stackoverflow.com/questions/65724760/how-it-is\"\r\n       ]\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/visited_links",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"visited_links"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Отправить пустой список",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Статус ответа 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"В ответе ok\", () => {\r",
+							"  pm.expect(pm.response.text()).to.equal(\"ok\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"links\": []\t\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:8000/visited_links",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"visited_links"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получить список",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJSON = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Статус ответа 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Поле status = ok\", () => {\r",
+							"  pm.expect(\"ok\").to.eql(responseJSON.status);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Поле domains содержит нужное число строк\", () => {\r",
+							"  pm.expect(3).to.eql(responseJSON.domains.length);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/visited_links",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"visited_links"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получить список с параметром from",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJSON = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Статус ответа 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Поле status = ok\", () => {\r",
+							"  pm.expect(\"ok\").to.eql(responseJSON.status);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Поле domains содержит нужное число строк\", () => {\r",
+							"  pm.expect(3).to.eql(responseJSON.domains.length);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/visited_links?from=1700081000",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"visited_links"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "1700081000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получить список с параметром to",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseJSON = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Статус ответа 200\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Поле status = ok\", () => {\r",
+							"  pm.expect(\"ok\").to.eql(responseJSON.status);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Поле domains содержит 0 строк\", () => {\r",
+							"  pm.expect(0).to.eql(responseJSON.domains.length);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "127.0.0.1:8000/visited_links?to=1700081000",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"visited_links"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "1700081000"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

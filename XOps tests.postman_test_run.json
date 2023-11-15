@@ -1,0 +1,225 @@
+{
+	"id": "cec1038b-2b05-42cd-9544-f2a9b03b1768",
+	"name": "XOps tests",
+	"timestamp": "2023-11-15T22:07:56.159Z",
+	"collection_id": "16212676-46718950-9705-464b-ab39-352501d79020",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 13,
+	"delay": "500",
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-11-15T22:07:52.655Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "622a4ef1-8677-480b-9b0e-8d0c7af34813",
+			"name": "Отправить ссылки",
+			"url": "127.0.0.1:8000/visited_links",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Статус ответа 200": true,
+				"В ответе ok": true
+			},
+			"testPassFailCounts": {
+				"Статус ответа 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"В ответе ok": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				107
+			],
+			"allTests": [
+				{
+					"Статус ответа 200": true,
+					"В ответе ok": true
+				}
+			]
+		},
+		{
+			"id": "e252a07b-98e3-438d-a0e5-9d55f03d78c5",
+			"name": "Отправить пустой список",
+			"url": "127.0.0.1:8000/visited_links",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Статус ответа 200": true,
+				"В ответе ok": true
+			},
+			"testPassFailCounts": {
+				"Статус ответа 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"В ответе ok": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Статус ответа 200": true,
+					"В ответе ok": true
+				}
+			]
+		},
+		{
+			"id": "07d7a042-c42f-433d-90c5-bdba7d34acd1",
+			"name": "Получить список",
+			"url": "127.0.0.1:8000/visited_links",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Статус ответа 200": true,
+				"Поле status = ok": true,
+				"Поле domains содержит нужное число строк": true
+			},
+			"testPassFailCounts": {
+				"Статус ответа 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Поле status = ok": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Поле domains содержит нужное число строк": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Статус ответа 200": true,
+					"Поле status = ok": true,
+					"Поле domains содержит нужное число строк": true
+				}
+			]
+		},
+		{
+			"id": "f7fe22f4-4bed-4fa0-a098-d751a919ea76",
+			"name": "Получить список с параметром from",
+			"url": "127.0.0.1:8000/visited_links?from=1700081000",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Статус ответа 200": true,
+				"Поле status = ok": true,
+				"Поле domains содержит нужное число строк": true
+			},
+			"testPassFailCounts": {
+				"Статус ответа 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Поле status = ok": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Поле domains содержит нужное число строк": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Статус ответа 200": true,
+					"Поле status = ok": true,
+					"Поле domains содержит нужное число строк": true
+				}
+			]
+		},
+		{
+			"id": "4978bc27-0b98-45e7-857b-2c3992a87107",
+			"name": "Получить список с параметром to",
+			"url": "127.0.0.1:8000/visited_links?to=1700081000",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Статус ответа 200": true,
+				"Поле status = ok": true,
+				"Поле domains содержит 0 строк": true
+			},
+			"testPassFailCounts": {
+				"Статус ответа 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Поле status = ok": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Поле domains содержит 0 строк": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Статус ответа 200": true,
+					"Поле status = ok": true,
+					"Поле domains содержит 0 строк": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 152,
+	"collection": {
+		"requests": [
+			{
+				"id": "622a4ef1-8677-480b-9b0e-8d0c7af34813",
+				"method": "POST"
+			},
+			{
+				"id": "e252a07b-98e3-438d-a0e5-9d55f03d78c5",
+				"method": "POST"
+			},
+			{
+				"id": "07d7a042-c42f-433d-90c5-bdba7d34acd1",
+				"method": "GET"
+			},
+			{
+				"id": "f7fe22f4-4bed-4fa0-a098-d751a919ea76",
+				"method": "GET"
+			},
+			{
+				"id": "4978bc27-0b98-45e7-857b-2c3992a87107",
+				"method": "GET"
+			}
+		]
+	}
+}

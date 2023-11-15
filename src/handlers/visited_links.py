@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, Response
 from time import time
 import uuid
 
@@ -34,4 +34,4 @@ async def create_visited_links(data: VisitedLinksIn):
             visited_at=round(time())
         )
         await database.execute(query)
-    return "ok"
+    return Response("ok")
