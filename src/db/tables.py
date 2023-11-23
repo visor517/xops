@@ -1,5 +1,4 @@
 import sqlalchemy
-from time import time
 
 from db.base import metadata
 
